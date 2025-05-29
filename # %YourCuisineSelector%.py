@@ -1,4 +1,4 @@
-# %Cuisine selector%
+# %YourCuisineSelector%
 import tkinter as tk
 from tkinter import messagebox
 import random
@@ -28,16 +28,16 @@ class CuisineWheel:
         ]
 
         # GUI components
-        self.label = tk.Label(root, text="WHAT TO EAT TODAY?", font=("Arial", 14))
+        self.label = tk.Label(root, text="What to eat today?", font=("Helvetica", 14))
         self.label.pack(pady=10)
 
         self.canvas = tk.Canvas(root, width=300, height=300, bg="white")
         self.canvas.pack(pady=20)
 
-        self.result_label = tk.Label(root, text="Cuisine: NONE", font=("Arial", 12, "bold"))
+        self.result_label = tk.Label(root, text="Cuisine: None", font=("Helvetica", 12, "bold"))
         self.result_label.pack(pady=10)
 
-        self.spin_button = tk.Button(root, text="Spin and no regret!", command=self.start_spin, font=("Arial", 12))
+        self.spin_button = tk.Button(root, text="Spin and no regret!", command=self.start_spin, font=("Helvetica", 12))
         self.spin_button.pack(pady=10)
 
         # Draw initial wheel
@@ -45,8 +45,8 @@ class CuisineWheel:
 
     def draw_wheel(self):
         self.canvas.delete("all")
-        center_x, center_y = 200, 200
-        radius = 150
+        center_x, center_y = 150, 150
+        radius = 120
 
         # Draw wheel segments
         for i in range(self.num_segments):
@@ -61,7 +61,7 @@ class CuisineWheel:
             text_y = center_y - (radius * 0.7) * math.sin(text_angle)
             # Rotate cuisine text to align with segments
             self.canvas.create_text(
-                text_x, text_y, text=self.cuisines[i], font=("Arial", 10),
+                text_x, text_y, text=self.cuisines[i], font=("Helvetica", 10),
                 angle=-(start_angle + self.angle_per_segment / 2)
             )
 
@@ -106,7 +106,7 @@ class CuisineWheel:
         selected_cuisine = self.cuisines[selected_index]
 
         self.result_label.config(text=f"Cuisine: {selected_cuisine}")
-        messagebox.showinfo("Result", f"You should try {selected_cuisine} cuisine!")
+        messagebox.showinfo("Result", f"Let's eat {selected_cuisine} cuisine today!")
 
 if __name__ == "__main__":
     root = tk.Tk()
